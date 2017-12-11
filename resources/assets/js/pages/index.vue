@@ -4,12 +4,14 @@
     <el-radio class="radio" v-model="radio" label="1">Element UI</el-radio>
     <el-radio class="radio" v-model="radio" label="2">Element UI</el-radio>
     <el-radio class="radio" v-model="radio" label="3">Element UI</el-radio>
-
+    <example></example>
   </div>
 </template>
 
 <script>
+  import Example from "../components/ExampleComponent.vue";
   export default {
+    components: { Example },
     data () {
       return {
         msg: 'This is a home',
