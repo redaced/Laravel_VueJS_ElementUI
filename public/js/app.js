@@ -47045,6 +47045,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
@@ -47055,15 +47057,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Example: __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue___default.a },
+  created: function created() {
+    var self = this;
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('api/menu').then(function (response) {
+      self.menus = response.data;
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },
   data: function data() {
     return {
+      menus: [],
+      activeIndex: '1',
       msg: 'This is a home',
       radio: '1'
     };
+  },
+
+  methods: {
+    handleSelect: function handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    }
   }
 });
 
@@ -47437,6 +47459,20 @@ var render = function() {
   return _c(
     "div",
     [
+      _c(
+        "el-menu",
+        {
+          staticClass: "el-menu-demo",
+          attrs: { "default-active": _vm.activeIndex, mode: "horizontal" },
+          on: { select: _vm.handleSelect }
+        },
+        _vm._l(_vm.menus, function(item, index) {
+          return _c("el-menu-item", { key: index, attrs: { index: index } }, [
+            _vm._v(_vm._s(item.name))
+          ])
+        })
+      ),
+      _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(_vm.msg))]),
       _vm._v(" "),
       _c(
