@@ -12,5 +12,6 @@ class MenuController extends Controller
     {
         $menus = Menu::where('is_active',true)->orderBy('sort','asc')->get();
         return $menus->toJson();
+        //
     }
 }
