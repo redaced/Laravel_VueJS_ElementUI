@@ -3,7 +3,7 @@
   <el-form-item label="Activity name">
     <el-input v-model="form.name"></el-input>
   </el-form-item>
-  <el-form-item label="Activity zone">
+  <el-form-item label="Activity zonasde">
     <el-select v-model="form.region" placeholder="please select your zone">
       <el-option label="Zone one" value="shanghai"></el-option>
       <el-option label="Zone two" value="beijing"></el-option>
